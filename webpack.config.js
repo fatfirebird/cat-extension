@@ -18,7 +18,7 @@ const PATHS = {
   static: `${mainPath}/src/static`,
   background: `${mainPath}/src/background/index.ts`,
   content: `${mainPath}/src/content/index.ts`,
-  popup: `${mainPath}/src/popup/index.ts`,
+  popup: `${mainPath}/src/popup/index.tsx`,
 }
 
 const pages = [

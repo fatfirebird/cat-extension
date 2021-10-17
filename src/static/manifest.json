@@ -17,9 +17,9 @@
   "content_scripts": [
     {
       "matches": ["<all_urls>"],
-      "js": ["content_scripts.js", "vendors.js"],
+      "js": ["content.js", "vendors.js"],
       "run_at": "document_idle"
     }
   ],
-  "web_accessible_resources": ["content_scripts.js", "vendors.js"]
+  "web_accessible_resources": ["content.js", "vendors.js"]
 }

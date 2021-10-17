@@ -1,27 +1,14 @@
 import { browser } from 'webextension-polyfill-ts'
+import { api } from '../api'
+import { BACKGROUND_ACTION, TBackgroundRequest } from '../types/background-request'
 
-browser.runtime.onMessage.addListener((request) => {
-  console.log(request.action)
-
-  switch (request.action) {
-    case 'GET_ACTIVE_TAB': {
-      return browser.tabs
-        .query({ active: true, currentWindow: true })
-        .then((tabs) => tabs[0])
+browser.runtime.onMessage.addListener(({ action, message }: TBackgroundRequest) => {
+  switch (action) {
+    case BACKGROUND_ACTION.GET_CAT: {
+      return api.cats
+        .get()
+        .then((data) => data)
         .catch((err) => err)
-    }
-    case 'UPDATE_ICON': {
-      browser.browserAction
-        .setIcon({ path: request.value ? 'icons/crt-blue.png' : 'icons/crt-gray.png' })
-        .catch((err) => console.log(err))
-      break
-    }
-
-    case 'OPEN': {
-      const title = request.message.title as string
-
-      browser.storage.sync.get(['token', 'refreshToken', 'projects']).then((res) => console.log(res))
-      break
     }
 
     default:
