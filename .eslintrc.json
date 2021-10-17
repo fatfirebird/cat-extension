@@ -1,0 +1,57 @@
+{
+  "env": {
+    "browser": true,
+    "es2020": true
+  },
+  "extends": [
+    "eslint:recommended",
+    "plugin:react/recommended", 
+    "prettier",
+    "plugin:import/errors",
+    "plugin:import/warnings",
+    "plugin:import/typescript",
+    "plugin:prettier/recommended"
+  ],
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "parserOptions": {
+      "project": "./tsconfig.json",
+      "tsconfigRootDir": "./",
+      "ecmaFeatures": {
+          "jsx": true
+      },
+      "ecmaVersion": 12,
+      "sourceType": "module"
+    }
+  },
+  "plugins": [
+    "react", 
+    "prettier", 
+    "@typescript-eslint",
+    "import",
+    "sort-imports-es6-autofix"
+  ],
+  "rules": {
+    "prettier/prettier": [
+      "error",
+      {
+        "singleQuote": true,
+        "semi": false
+      }
+          ],
+    "react/no-unescaped-entities": 0,
+    "no-unused-vars": "warn",
+    "no-redeclare": [2, {"builtinGlobals": false}],
+    "no-extra-semi": "off",
+    "semi": ["error", "never"],
+    "quotes": ["error", "single"],
+    "react/jsx-filename-extension": ["error", { "extensions": [".jsx", ".tsx"] }],
+    "react/prop-types": "off",
+    "space-before-function-paren": "off",
+    "@typescript-eslint/no-use-before-define": "off",
+    "@typescript-eslint/ban-ts-comment": "off",
+    "@typescript-eslint/explicit-module-boundary-types": "off",
+    "@typescript-eslint/no-explicit-any": "off",
+    "@typescript-eslint/no-empty-function": "off"
+  }
+}

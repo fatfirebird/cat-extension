@@ -1,0 +1,25 @@
+{
+  "manifest_version": 2,
+  "name": "CATS",
+  "version": "1.0.0",
+  "description": "CATS EXAMPLE",
+  "icons": {
+    "128": "icons/logo.png"
+  },
+  "browser_action": {
+    "default_title": "ЭСТЕНШЕН С КОШКАМИ",
+    "default_popup": "index.html"
+  },
+  "background": {
+    "scripts": ["background.js", "vendors.js"]
+  },
+  "permissions": ["background", "<all_urls>", "tabs", "cookies", "storage"],
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["content_scripts.js", "vendors.js"],
+      "run_at": "document_idle"
+    }
+  ],
+  "web_accessible_resources": ["content_scripts.js", "vendors.js"]
+}
