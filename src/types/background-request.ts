@@ -1,6 +1,6 @@
 export enum BACKGROUND_ACTION {
   GET_CAT = 'GET_CAT',
-  SHOW_CAT = 'SHOW_CAT',
+  REMOVE_CAT = 'REMOVE_CAT',
 }
 
 export type TBackgroundRequest = {

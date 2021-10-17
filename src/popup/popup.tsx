@@ -4,8 +4,8 @@ import { TCat } from '../api/api.types'
 import { BACKGROUND_ACTION } from '../types/background-request'
 
 export const Popup: React.FC = () => {
-  const [randomCat, setRandomCat] = useState<TCat | null>(null)
   const [isBlocked, setIsBlocked] = useState<boolean>(false)
+  const [randomCat, setRandomCat] = useState<TCat | null>(null)
 
   useEffect(() => {
     const getInitialCat = async () => {
@@ -16,7 +16,7 @@ export const Popup: React.FC = () => {
     getInitialCat()
   }, [])
 
-  const handleSendMessage = () => {
+  const handleLoadCat = () => {
     setIsBlocked(true)
 
     browser.runtime
@@ -34,13 +34,31 @@ export const Popup: React.FC = () => {
       })
   }
 
+  const handleClearCat = () => {
+    setIsBlocked(true)
+
+    browser.runtime
+      .sendMessage({
+        action: BACKGROUND_ACTION.REMOVE_CAT,
+      })
+      .finally(() => {
+        setRandomCat(null)
+        setIsBlocked(false)
+      })
+  }
+
   return (
-    <div>
-      <button style={{ width: '100%' }} onClick={handleSendMessage} disabled={isBlocked}>
+    <div style={{ width: '300px', height: '290px' }}>
+      <button style={{ width: '100%' }} onClick={handleLoadCat} disabled={isBlocked}>
         ХОЧУ КАРТИНКУ С КОТОМ
       </button>
       {randomCat?.url && (
-        <img id={randomCat.id} src={randomCat.url} style={{ paddingTop: '10px' }} height="200px" width="200px" />
+        <div>
+          <img id={randomCat.id} src={randomCat.url} style={{ paddingTop: '10px' }} height="230px" width="100%" />
+          <button style={{ width: '100%' }} onClick={handleClearCat} disabled={isBlocked}>
+            НЕ ХОЧУ КАРТИНКУ С КОТОМ
+          </button>
+        </div>
       )}
     </div>
   )

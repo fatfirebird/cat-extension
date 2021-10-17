@@ -16,7 +16,7 @@
   "permissions": ["background", "<all_urls>", "tabs", "cookies", "storage"],
   "content_scripts": [
     {
-      "matches": ["<all_urls>"],
+      "matches": ["*://gitlab.interneturok.ru/*"],
       "js": ["content.js", "vendors.js"],
       "run_at": "document_idle"
     }

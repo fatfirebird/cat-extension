@@ -17,7 +17,7 @@ const PATHS = {
   build: `${mainPath}/build`,
   static: `${mainPath}/src/static`,
   background: `${mainPath}/src/background/index.ts`,
-  content: `${mainPath}/src/content/index.ts`,
+  content: `${mainPath}/src/content/index.tsx`,
   popup: `${mainPath}/src/popup/index.tsx`,
 }
 

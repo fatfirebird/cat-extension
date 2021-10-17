@@ -22,6 +22,13 @@ browser.runtime.onMessage.addListener(({ action }: TBackgroundRequest) => {
         .catch((err) => err)
     }
 
+    case BACKGROUND_ACTION.REMOVE_CAT: {
+      browser.storage.sync.set({
+        cat: null,
+      })
+      break
+    }
+
     default:
       break
   }
