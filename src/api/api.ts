@@ -22,7 +22,7 @@ class Api {
     })
 
     this.instance.interceptors.response.use((response) => {
-      return response.data
+      return response
     })
   }
 
